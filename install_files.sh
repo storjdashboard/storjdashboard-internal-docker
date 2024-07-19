@@ -206,11 +206,9 @@ echo "- cleanup.sh"
 echo "- kill-clean.sh"
 
 # Ask if the user wants to run setup.sh
-while true; do
-    read -p "Do you wish to run setup.sh now? (y/n): " yn
-    case $yn in
-        [Yy]* ) ./setup.sh; break;;
-        [Nn]* ) echo "You can run ./setup.sh later to complete the setup."; break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+read -p "Do you wish to run setup.sh now? (y/n): " yn
+if [[ $yn =~ ^[Yy]$ ]]; then
+    ./setup.sh
+else
+    echo "You can run ./setup.sh later to complete the setup."
+fi
