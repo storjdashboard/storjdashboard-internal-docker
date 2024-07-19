@@ -120,9 +120,8 @@ done
 docker exec -it storjdashboard_apache_1 bash -c "apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev && docker-php-ext-install mysqli"
 
 # Restart Apache to load new PHP extensions
-docker exec storjdashboard_apache_1 service apache2 restart
+docker restart storjdashboard_apache_1
 
-docker start storjdashboard_apache_1
 EOF
 )
 
