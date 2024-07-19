@@ -4,7 +4,7 @@ This repository contains the installation script for the Storj Dashboard Interna
 
 ## Installation
 
-To install and run the Storj Dashboard Internal Docker, you can use the following one-liner command in your terminal. This command uses `curl` to fetch the script from the repository and pipes it directly to `bash` for execution.
+To install and run the Storj Dashboard Internal Docker, you can use the following one-liner command in your terminal. This command uses `wget` to fetch the script from the repository and pipes it directly to `bash` for execution.
 
 ### Command
 
