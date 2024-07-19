@@ -44,8 +44,8 @@ EOF
 
 APACHE_CONFIG_CONTENT=$(cat <<'EOF'
 <VirtualHost *:80>
-    DocumentRoot /var/www/html/web
-    <Directory /var/www/html/web>
+    DocumentRoot /var/www/html
+    <Directory /var/www/html>
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
@@ -88,8 +88,21 @@ sed -i "s/\$username_sql = \"your_user\"/\$username_sql = \"$MYSQL_USER\"/" web/
 sed -i "s/\$password_sql = \"your_pw\"/\$password_sql = \"$MYSQL_PASSWORD\"/" web/web/Connections/sql.php
 
 # Configure cfg.php
-ROOT_DIR="web"
-sed -i "s|.[FOLDER].|$ROOT_DIR|" web/web/cfg.php
+
+# Define the root directory value
+ROOT_DIR='web'
+
+# Path to the configuration file
+FILE="web/web/cfg.php"
+
+# Check if the file exists
+if [ -f "$FILE" ]; then
+    # Use sed to replace the placeholder with the value of ROOT_DIR
+    sed -i "s|\[cfg_root_dir\]|$ROOT_DIR|g" "$FILE"
+    echo "Replacement complete."
+else
+    echo "Error: File $FILE does not exist."
+fi
 
 # Ensure the web directory has the correct permissions
 chown -R www-data:www-data web
