@@ -150,6 +150,8 @@ docker rm storjdashboard_apache_1 storjdashboard_mysql_1
 # Remove Docker images
 docker rmi $(docker images -q)
 
+docker volume rm storjdashboard_mysql_data storjdashboard_apache-logs
+
 # Remove all files except install_files.sh
 find . -maxdepth 1 ! -name 'install_files.sh' -exec rm -rf {} +
 EOF
