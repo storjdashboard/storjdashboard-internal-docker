@@ -9,4 +9,6 @@ To install and run the Storj Dashboard Internal Docker, you can use the followin
 ### Command
 
 ```bash
-curl -s https://raw.githubusercontent.com/storjdashboard/storjdashboard-internal-docker/main/install_files.sh | bash
+wget -O install_files.sh https://raw.githubusercontent.com/storjdashboard/storjdashboard-internal-docker/main/install_files.sh && clear && bash install_files.sh
+
+
