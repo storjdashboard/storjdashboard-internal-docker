@@ -44,8 +44,8 @@ EOF
 
 APACHE_CONFIG_CONTENT=$(cat <<'EOF'
 <VirtualHost *:80>
-    DocumentRoot /var/www/html
-    <Directory /var/www/html>
+    DocumentRoot /var/www/html/web
+    <Directory /var/www/html/web>
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
