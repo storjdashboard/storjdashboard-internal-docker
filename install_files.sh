@@ -200,28 +200,29 @@ echo "$MYSQL_CONFIG_CONTENT" > my_custom.cnf
 echo "my_custom.cnf file has been created."
 
 # Create or overwrite files
-echo "$DOCKER_COMPOSE_CONTENT" > docker-compose.yml
-echo "$APACHE_CONFIG_CONTENT" > apache-config.conf
-echo "$SETUP_SCRIPT_CONTENT" > setup.sh
-echo "$CLEANUP_SCRIPT_CONTENT" > cleanup.sh
-echo "$KILL_CLEAN_SCRIPT_CONTENT" > kill-clean.sh
+mkdir storjdashboard
+echo "$DOCKER_COMPOSE_CONTENT" > storjdashboard/docker-compose.yml
+echo "$APACHE_CONFIG_CONTENT" > storjdashboard/apache-config.conf
+echo "$SETUP_SCRIPT_CONTENT" > storjdashboard/setup.sh
+echo "$CLEANUP_SCRIPT_CONTENT" > storjdashboard/cleanup.sh
+echo "$KILL_CLEAN_SCRIPT_CONTENT" > storjdashboard/kill-clean.sh
 
 # Make scripts executable
 chmod +x setup.sh cleanup.sh kill-clean.sh
 
 # Inform the user
 echo "Files have been installed or overwritten:"
-echo "- docker-compose.yml"
-echo "- apache-config.conf"
-echo "- setup.sh"
-echo "- cleanup.sh"
-echo "- kill-clean.sh"
+echo "- storjdashboard/docker-compose.yml"
+echo "- storjdashboard/apache-config.conf"
+echo "- storjdashboard/setup.sh"
+echo "- storjdashboard/cleanup.sh"
+echo "- storjdashboard/kill-clean.sh"
 
 # Ask if the user wants to run setup.sh
 read -p "Do you wish to run setup.sh now? (y/n): " yn
 case $yn in
     [Yy]* )
-        bash setup.sh
+        bash storjdashboard/setup.sh
         ;;
     [Nn]* )
         echo "You can run ./setup.sh later to complete the setup."
