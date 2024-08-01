@@ -191,16 +191,18 @@ default-authentication-plugin = mysql_native_password
 EOF
 )
 
+mkdir storjdashboard
+
 # Write the content to php.ini
-echo "$PHP_INI_CONTENT" > php.ini
+echo "$PHP_INI_CONTENT" > storjdashboard/php.ini
 echo "php.ini file has been created."
 
 # Write the content to my_custom.cnf
-echo "$MYSQL_CONFIG_CONTENT" > my_custom.cnf
+echo "$MYSQL_CONFIG_CONTENT" > storjdashboard/my_custom.cnf
 echo "my_custom.cnf file has been created."
 
 # Create or overwrite files
-mkdir storjdashboard
+
 echo "$DOCKER_COMPOSE_CONTENT" > storjdashboard/docker-compose.yml
 echo "$APACHE_CONFIG_CONTENT" > storjdashboard/apache-config.conf
 echo "$SETUP_SCRIPT_CONTENT" > storjdashboard/setup.sh
@@ -208,7 +210,7 @@ echo "$CLEANUP_SCRIPT_CONTENT" > storjdashboard/cleanup.sh
 echo "$KILL_CLEAN_SCRIPT_CONTENT" > storjdashboard/kill-clean.sh
 
 # Make scripts executable
-chmod +x setup.sh cleanup.sh kill-clean.sh
+chmod +x storjdashboard/setup.sh storjdashboard/cleanup.sh storjdashboard/kill-clean.sh
 
 # Inform the user
 echo "Files have been installed or overwritten:"
